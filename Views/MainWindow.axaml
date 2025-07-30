@@ -1,0 +1,34 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:PasswordManager.ViewModels"
+        x:Class="PasswordManager.Views.MainWindow"
+        Title="Password Manager"
+        Width="800" Height="600"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.DataContext>
+        <vm:MainViewModel />
+    </Window.DataContext>
+
+    <DockPanel>
+        <!-- Panel Izquierdo -->
+        <StackPanel Width="250" Margin="10" DockPanel.Dock="Left">
+            <TextBox Watermark="Buscar..."
+                     Text="{Binding SearchText, Mode=TwoWay}" />
+
+            <ListBox ItemsSource="{Binding Entries}" Margin="0,10,0,0"
+                     SelectedItem="{Binding SelectedEntry, Mode=TwoWay}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Website}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+
+        <!-- Panel Derecho -->
+        <StackPanel Margin="10">
+            <TextBlock Text="(Aquí iría detalle de la entrada seleccionada)" />
+        </StackPanel>
+    </DockPanel>
+</Window>

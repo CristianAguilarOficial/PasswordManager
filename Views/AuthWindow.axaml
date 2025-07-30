@@ -1,0 +1,20 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="https://github.com/avaloniaui"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:PasswordManager.ViewModels"
+        mc:Ignorable="d"
+        x:Class="PasswordManager.Views.AuthWindow">
+        
+    <Window.DataContext>
+        <vm:AuthViewModel />
+    </Window.DataContext>
+
+    <StackPanel Margin="20" Spacing="10" VerticalAlignment="Center">
+        <TextBlock Text="Contraseña maestra" FontWeight="Bold" />
+        <TextBox PasswordChar="●"
+                 Text="{Binding Password, Mode=TwoWay}" />
+        <Button Content="Ingresar"
+                Command="{Binding LoginCommand}" />
+    </StackPanel>
+</Window>
